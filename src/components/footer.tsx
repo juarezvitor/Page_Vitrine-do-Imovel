@@ -1,8 +1,9 @@
 import Link from "next/link"
-import { Building2, Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Youtube } from "lucide-react"
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Youtube } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
+import Image from 'next/image'
 
 export function Footer() {
   return (
@@ -11,7 +12,13 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2 text-xl font-bold">
-              <Building2 className="h-6 w-6" />
+              <Image
+              src="/vitrineicon.png"
+              alt="Vitrine do Imóvel"
+              width={24}
+              height={24}
+              className="h-6 w-6"
+              />
               <span>Vitrine do Imóveil</span>
             </Link>
             <p className="text-muted-foreground">

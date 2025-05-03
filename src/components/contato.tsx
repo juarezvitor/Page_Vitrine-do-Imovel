@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Building2, Mail, MapPin, Phone } from "lucide-react"
+import emailjs from "@emailjs/browser"
 
 export function Contato() {
   const [formData, setFormData] = useState({
@@ -40,23 +41,33 @@ export function Contato() {
     e.preventDefault()
     setEnviando(true)
 
-    // Simulação de envio
-    setTimeout(() => {
-      setEnviando(false)
-      setEnviado(true)
-      setFormData({
-        nome: "",
-        email: "",
-        telefone: "",
-        assunto: "",
-        mensagem: "",
-      })
+      
+      emailjs
+        .send("service_km5slza", "template_7o6rjkl", formData, "_BZm5MHPhTtpMXVeJ").then(
+          (response) => {
+            console.log("Mensagem enviada com sucesso!", response.status, response.text)
+          },
+          (error) => {
+            console.error("Erro ao enviar mensagem:", error)
+          }
+        )
 
-      // Reset do estado de enviado após 5 segundos
       setTimeout(() => {
-        setEnviado(false)
-      }, 5000)
-    }, 1500)
+        setEnviando(false)
+        setEnviado(true)
+        setFormData({
+          nome: "",
+          email: "",
+          telefone: "",
+          assunto: "",
+          mensagem: "",
+        })
+
+        // Reset do estado de enviado após 5 segundos
+        setTimeout(() => {
+          setEnviado(false)
+        }, 5000)
+      }, 1500)
   }
 
   return (
@@ -204,7 +215,8 @@ export function Contato() {
 
         <div className="mt-6 h-[300px] bg-muted rounded-lg overflow-hidden">
           <div className="w-full h-full flex items-center justify-center">
-            <span className="text-muted-foreground">Mapa de Localização</span>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4390.876935185427!2d-51.23191944809927!3d-27.40006041559257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94e17b2ca485bf4f%3A0x2d3b04e2847eb916!2sR.%20Cel%20Lucidoro%2C%20844%20-%20Centro%2C%20Campos%20Novos%20-%20SC%2C%2089620-000!5e1!3m2!1spt-BR!2sbr!4v1746228923842!5m2!1spt-BR!2sbr" 
+            width="750" height="450" style={{ border: "0" }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
       </div>
