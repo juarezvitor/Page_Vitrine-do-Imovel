@@ -8,6 +8,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Slider } from "@/components/ui/slider"
 import { ListaImoveis } from "@/components/lista-imoveis"
 import { Search } from "lucide-react"
+import { imoveis } from "@/data/imoveis"
+
 
 export function BuscarImoveis() {
   const [filtros, setFiltros] = useState({
@@ -17,7 +19,8 @@ export function BuscarImoveis() {
     valorMax: 10000000,
   })
 
-  const bairros = ["Centro", "Barra Sul", "Barra Norte", "Pioneiros", "Praia dos Amores", "Nações"]
+  const bairros = Array.from(
+  new Set(imoveis.filter((imovel) => imovel.cidade === filtros.cidade.replace("-", " ")).map((imovel) => imovel.bairro))).sort((a, b) => a.localeCompare(b))
 
   const handleValorChange = (value: number[]) => {
     setFiltros({

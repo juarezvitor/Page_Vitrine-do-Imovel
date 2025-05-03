@@ -8,7 +8,9 @@ import { Footer } from "@/components/footer"
 import { imoveis } from "@/data/imoveis"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowLeft, Bed, Bath, Maximize, MapPin, Car, Calendar, Share2, Heart, Phone, ArrowRight } from "lucide-react"
+import { ArrowLeft, Bed, Bath, Maximize, MapPin, Car, Calendar, Share2, Heart, Phone, ArrowRight,} from "lucide-react"
+import {Carousel, CarouselContent, CarouselItem, CarouselNext,CarouselPrevious} from "@/components/ui/carousel"
+
 
 export default function ImovelPage({ params }: { params: { id: string } }) {
   const imovel = imoveis.find((imovel) => imovel.id === Number.parseInt(params.id))
@@ -39,6 +41,10 @@ export default function ImovelPage({ params }: { params: { id: string } }) {
       maximumFractionDigits: 0,
     })
   }
+  const imagens = Array.isArray(imovel.imagem)
+    ? imovel.imagem
+    : [imovel.imagem, "/placeholder.svg?height=600&width=1000", "/placeholder.svg?height=600&width=1000"]
+
 
   const imoveisSimilares = imoveis.filter((item) => item.id !== imovel.id && item.tipo === imovel.tipo).slice(0, 3)
 
@@ -73,17 +79,30 @@ export default function ImovelPage({ params }: { params: { id: string } }) {
               <Button>Agendar Visita</Button>
             </div>
           </div>
-
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2 space-y-8">
               <div className="relative aspect-[16/9] rounded-lg overflow-hidden">
-                <Image
-                  src={imovel.imagem || `/placeholder.svg?height=600&width=1000`}
-                  alt={imovel.titulo}
-                  fill
-                  className="object-cover"
-                />
-                <Badge className="absolute top-4 left-4 bg-white text-black hover:bg-white/90">{imovel.tipo}</Badge>
+                <Carousel className="w-full">
+                  <CarouselContent>
+                    {imagens.map((img, index) => (
+                      <CarouselItem key={index}>
+                        <div className="relative aspect-[16/9]">
+                          <Image
+                            src={img || "/placeholder.svg"}
+                            alt={`${imovel.titulo} - imagem ${index + 1}`}
+                            fill
+                            className="object-cover rounded-lg"
+                          />
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious className="left-2 bg-white/80 hover:bg-white text-primary hover:text-primary" />
+                  <CarouselNext className="right-2 bg-white/80 hover:bg-white text-primary hover:text-primary" />
+                </Carousel>
+                <Badge className="absolute top-4 left-4 z-10 bg-white text-black hover:bg-white/90">
+                  {imovel.tipo}
+                </Badge>
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -118,15 +137,6 @@ export default function ImovelPage({ params }: { params: { id: string } }) {
                 <TabsContent value="descricao" className="p-4 bg-muted/30 rounded-lg mt-4">
                   <h3 className="text-lg font-bold mb-2">Sobre o Imóvel</h3>
                   <p className="text-muted-foreground">{imovel.descricao}</p>
-                  <p className="text-muted-foreground mt-4">
-                    Este imóvel de alto padrão oferece o máximo em conforto e sofisticação. Com acabamentos premium,
-                    vista privilegiada e localização estratégica, é uma excelente oportunidade para quem busca
-                    exclusividade e qualidade de vida em Balneário Camboriú.
-                  </p>
-                  <p className="text-muted-foreground mt-4">
-                    O empreendimento conta com infraestrutura completa, incluindo piscina, academia, espaço gourmet,
-                    spa, sauna e segurança 24 horas.
-                  </p>
                 </TabsContent>
                 <TabsContent value="caracteristicas" className="p-4 bg-muted/30 rounded-lg mt-4">
                   <h3 className="text-lg font-bold mb-2">Características</h3>
@@ -134,59 +144,23 @@ export default function ImovelPage({ params }: { params: { id: string } }) {
                     <div>
                       <h4 className="font-medium mb-2">Internas</h4>
                       <ul className="space-y-2 text-muted-foreground">
-                        <li className="flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                          {imovel.quartos} quartos ({imovel.quartos} suítes)
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                          {imovel.banheiros} banheiros
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                          Varanda gourmet
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                          Cozinha planejada
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                          Sala ampla com vista para o mar
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                          Ar-condicionado em todos os ambientes
-                        </li>
+                        {imovel.caracteristicas?.internas.map((item, idx) => (
+                          <li key={idx} className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                            {item}
+                          </li>
+                        ))}
                       </ul>
                     </div>
                     <div>
                       <h4 className="font-medium mb-2">Condomínio</h4>
                       <ul className="space-y-2 text-muted-foreground">
-                        <li className="flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                          Piscina
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                          Academia
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                          Espaço gourmet
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                          Sauna
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                          Segurança 24h
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                          {imovel.tipo === "Casa" ? 4 : 3} vagas de garagem
-                        </li>
+                        {imovel.caracteristicas?.condominio.map((item, idx) => (
+                          <li key={idx} className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                            {item}
+                          </li>
+                        ))}
                       </ul>
                     </div>
                   </div>
@@ -201,22 +175,12 @@ export default function ImovelPage({ params }: { params: { id: string } }) {
                   <div className="mt-4">
                     <h4 className="font-medium mb-2">Proximidades</h4>
                     <ul className="space-y-2 text-muted-foreground">
-                      <li className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                        200m da praia
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                        500m do Shopping Balneário
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                        Próximo a restaurantes e comércio
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                        Fácil acesso à Avenida Atlântica
-                      </li>
+                      {imovel.localizacao?.proximidades.map((item, idx) => (
+                        <li key={idx} className="flex items-center gap-2">
+                          <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                          {item}
+                        </li>
+                      ))}
                     </ul>
                   </div>
                 </TabsContent>
@@ -302,7 +266,7 @@ export default function ImovelPage({ params }: { params: { id: string } }) {
                 <Card key={imovel.id} className="overflow-hidden group">
                   <div className="relative">
                     <Image
-                      src={imovel.imagem || `/placeholder.svg?height=300&width=500`}
+                      src={Array.isArray(imovel.imagem) ? imovel.imagem[0] : imovel.imagem}
                       alt={imovel.titulo}
                       width={500}
                       height={300}

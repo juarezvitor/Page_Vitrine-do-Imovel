@@ -80,7 +80,7 @@ export function ListaImoveis({ filtros }: ListaImoveisProps) {
           <Card key={imovel.id} className="overflow-hidden group">
             <div className="relative">
               <Image
-                src={imovel.imagem || `/placeholder.svg?height=300&width=500`}
+                src={Array.isArray(imovel.imagem) ? imovel.imagem[0] : imovel.imagem || `/placeholder.svg?height=300&width=500`}
                 alt={imovel.titulo}
                 width={500}
                 height={300}
