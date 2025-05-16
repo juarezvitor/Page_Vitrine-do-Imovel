@@ -20,7 +20,7 @@ export function SobreNos() {
             medida para cada cliente. Trabalhamos com os melhores empreendimentos da região e oferecemos um portfólio
             diversificado de imóveis de luxo.
           </p>
-          <Button asChild>
+          <Button asChild className="bg-azul-escuro text-white hover:bg-azul-escuro/90">
             <Link href="/sobre" className="inline-flex items-center">
               Conheça Nossa História
               <ArrowRight className="ml-2 h-4 w-4" />
@@ -40,30 +40,30 @@ export function SobreNos() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <Card>
           <CardContent className="p-6 text-center space-y-4">
-            <Award className="h-12 w-12 mx-auto text-primary" />
+            <Award className="h-12 w-12 mx-auto text-azul-escuro" />
             <h3 className="text-xl font-bold">Excelência</h3>
             <p className="text-muted-foreground">
               Compromisso com a qualidade e excelência em todos os nossos serviços.
             </p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="shadow-luxury">
           <CardContent className="p-6 text-center space-y-4">
-            <Building className="h-12 w-12 mx-auto text-primary" />
+            <Building className="h-12 w-12 mx-auto text-azul-escuro" />
             <h3 className="text-xl font-bold">Expertise</h3>
             <p className="text-muted-foreground">Conhecimento profundo do mercado imobiliário de alto padrão.</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="shadow-luxury">
           <CardContent className="p-6 text-center space-y-4">
-            <Users className="h-12 w-12 mx-auto text-primary" />
+            <Users className="h-12 w-12 mx-auto text-azul-escuro" />
             <h3 className="text-xl font-bold">Atendimento</h3>
             <p className="text-muted-foreground">Atendimento personalizado e exclusivo para cada cliente.</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="shadow-luxury">
           <CardContent className="p-6 text-center space-y-4">
-            <Clock className="h-12 w-12 mx-auto text-primary" />
+            <Clock className="h-12 w-12 mx-auto text-azul-escuro" />
             <h3 className="text-xl font-bold">Agilidade</h3>
             <p className="text-muted-foreground">Processos ágeis e eficientes para compra, venda e locação.</p>
           </CardContent>

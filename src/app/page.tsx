@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="flex-1">
+      <main className="flex-1 bg-background">
         <HeroSection />
 
         <section className="container mx-auto py-12 px-4 md:px-6 ">

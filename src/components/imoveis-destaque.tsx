@@ -48,9 +48,9 @@ export function ImoveisDestaque() {
                       height={300}
                       className="w-full h-[220px] object-cover transition-transform group-hover:scale-105"
                     />
-                    <Badge className="absolute top-2 left-2 bg-white text-black hover:bg-white/90">{imovel.tipo}</Badge>
+                    <Badge className="absolute top-2 left-2 bg-white text-azul-escuro hover:bg-white/90">{imovel.tipo}</Badge>
                     {imovel.destaque && (
-                      <Badge className="absolute top-2 right-2 bg-amber-500 text-white hover:bg-amber-600">
+                      <Badge className="absolute top-2 right-2 bg-azul-escuro text-white hover:bg-azul-escuro">
                         Destaque
                       </Badge>
                     )}
@@ -58,14 +58,14 @@ export function ImoveisDestaque() {
 
                   <CardContent className="p-4">
                     <div className="space-y-2">
-                      <h3 className="font-bold text-lg line-clamp-1">{imovel.titulo}</h3>
+                      <h3 className="font-bold text-lg line-clamp-1 text-azul-escuro">{imovel.titulo}</h3>
                       <div className="flex items-center text-muted-foreground">
                         <MapPin className="h-4 w-4 mr-1" />
                         <span className="text-sm">
                           {imovel.bairro}, {imovel.cidade}
                         </span>
                       </div>
-                      <p className="text-2xl font-bold text-primary">{formatarValor(imovel.valor)}</p>
+                      <p className="text-2xl font-bold text-azul-escuro">{formatarValor(imovel.valor)}</p>
                       <div className="flex justify-between pt-2">
                         <div className="flex items-center gap-1">
                           <Bed className="h-4 w-4 text-muted-foreground" />
@@ -81,7 +81,7 @@ export function ImoveisDestaque() {
                         </div>
                       </div>
 
-                      <Button asChild variant="link" className="p-0 h-auto mt-2">
+                      <Button asChild variant="link" className="p-0 h-auto mt-2 text-azul-escuro hover:text-dourado">
                         <Link href={`/imovel/${imovel.id}`} className="flex items-center">
                           Ver Detalhes
                           <ArrowRight className="ml-1 h-4 w-4" />
@@ -99,7 +99,7 @@ export function ImoveisDestaque() {
             {imoveisDestaque
               .filter((imovel) => imovel.tipo === "Casa")
               .map((imovel) => (
-                <Card key={imovel.id} className="overflow-hidden group">
+                <Card key={imovel.id} className="overflow-hidden group shadow-luxury">
                   <div className="relative">
                     <Image
                       src={Array.isArray(imovel.imagem) ? imovel.imagem[0] : imovel.imagem || `/placeholder.svg?height=300&width=500`}
@@ -108,9 +108,9 @@ export function ImoveisDestaque() {
                       height={300}
                       className="w-full h-[220px] object-cover transition-transform group-hover:scale-105"
                     />
-                    <Badge className="absolute top-2 left-2 bg-white text-black hover:bg-white/90">{imovel.tipo}</Badge>
+                    <Badge className="absolute top-2 left-2 bg-white text-azul-escuro hover:bg-white/90">{imovel.tipo}</Badge>
                     {imovel.destaque && (
-                      <Badge className="absolute top-2 right-2 bg-amber-500 text-white hover:bg-amber-600">
+                      <Badge className="absolute top-2 right-2 bg-azul-escuro text-white hover:bg-azul-escuro/90">
                         Destaque
                       </Badge>
                     )}
@@ -118,14 +118,14 @@ export function ImoveisDestaque() {
 
                   <CardContent className="p-4">
                     <div className="space-y-2">
-                      <h3 className="font-bold text-lg line-clamp-1">{imovel.titulo}</h3>
+                      <h3 className="font-bold text-lg line-clamp-1 text-azul-escuro">{imovel.titulo}</h3>
                       <div className="flex items-center text-muted-foreground">
                         <MapPin className="h-4 w-4 mr-1" />
                         <span className="text-sm">
                           {imovel.bairro}, {imovel.cidade}
                         </span>
                       </div>
-                      <p className="text-2xl font-bold text-primary">{formatarValor(imovel.valor)}</p>
+                      <p className="text-2xl font-bold text-azul-escuro">{formatarValor(imovel.valor)}</p>
                       <div className="flex justify-between pt-2">
                         <div className="flex items-center gap-1">
                           <Bed className="h-4 w-4 text-muted-foreground" />
@@ -141,7 +141,7 @@ export function ImoveisDestaque() {
                         </div>
                       </div>
 
-                      <Button asChild variant="link" className="p-0 h-auto mt-2">
+                      <Button asChild variant="link" className="p-0 h-auto mt-2 text-azul-escuro hover:text-dourado">
                         <Link href={`/imovel/${imovel.id}`} className="flex items-center">
                           Ver Detalhes
                           <ArrowRight className="ml-1 h-4 w-4" />
@@ -159,7 +159,7 @@ export function ImoveisDestaque() {
             {imoveisDestaque
               .filter((imovel) => imovel.tipo === "Cobertura")
               .map((imovel) => (
-                <Card key={imovel.id} className="overflow-hidden group">
+                <Card key={imovel.id} className="overflow-hidden group shadow-luxury">
                   <div className="relative">
                     <Image
                       src={Array.isArray(imovel.imagem) ? imovel.imagem[0] : imovel.imagem || `/placeholder.svg?height=300&width=500`}
@@ -168,9 +168,9 @@ export function ImoveisDestaque() {
                       height={300}
                       className="w-full h-[220px] object-cover transition-transform group-hover:scale-105"
                     />
-                    <Badge className="absolute top-2 left-2 bg-white text-black hover:bg-white/90">{imovel.tipo}</Badge>
+                    <Badge className="absolute top-2 left-2 bg-white text-azul-escuro hover:bg-white/90">{imovel.tipo}</Badge>
                     {imovel.destaque && (
-                      <Badge className="absolute top-2 right-2 bg-amber-500 text-white hover:bg-amber-600">
+                      <Badge className="absolute top-2 right-2 bg-azul-escuro text-white hover:bg-azul-escuro/90">
                         Destaque
                       </Badge>
                     )}
@@ -178,14 +178,14 @@ export function ImoveisDestaque() {
 
                   <CardContent className="p-4">
                     <div className="space-y-2">
-                      <h3 className="font-bold text-lg line-clamp-1">{imovel.titulo}</h3>
+                      <h3 className="font-bold text-lg line-clamp-1 text-azul-escuro">{imovel.titulo}</h3>
                       <div className="flex items-center text-muted-foreground">
                         <MapPin className="h-4 w-4 mr-1" />
                         <span className="text-sm">
                           {imovel.bairro}, {imovel.cidade}
                         </span>
                       </div>
-                      <p className="text-2xl font-bold text-primary">{formatarValor(imovel.valor)}</p>
+                      <p className="text-2xl font-bold text-azul-escuro">{formatarValor(imovel.valor)}</p>
                       <div className="flex justify-between pt-2">
                         <div className="flex items-center gap-1">
                           <Bed className="h-4 w-4 text-muted-foreground" />
@@ -201,7 +201,7 @@ export function ImoveisDestaque() {
                         </div>
                       </div>
 
-                      <Button asChild variant="link" className="p-0 h-auto mt-2">
+                      <Button asChild variant="link" className="p-0 h-auto mt-2 text-azul-escuro hover:text-dourado">
                         <Link href={`/imovel/${imovel.id}`} className="flex items-center">
                           Ver Detalhes
                           <ArrowRight className="ml-1 h-4 w-4" />
@@ -216,7 +216,7 @@ export function ImoveisDestaque() {
       </Tabs>
 
       <div className="flex justify-center pt-4">
-        <Button asChild size="lg">
+        <Button asChild size="lg" className="bg-azul-escuro text-white hover:bg-azul-escuro/90">
           <Link href="/imoveis">
             Ver Todos os Imóveis
             <ArrowRight className="ml-2 h-4 w-4" />

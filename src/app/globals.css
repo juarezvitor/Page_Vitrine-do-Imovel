@@ -1,123 +1,195 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-
-@custom-variant dark (&:is(.dark *));
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-}
-
-:root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-}
-
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
+  :root {
+    /* Configurações básicas */
+    --radius: 0.625rem;
+
+    /* Cores principais */
+    --background: 0 0% 100%;
+    /* Branco para o fundo principal */
+    --foreground: 220 70% 15%;
+    /* Azul escuro para texto principal */
+
+    /* Cartões */
+    --card: 0 0% 100%;
+    /* Branco para cartões */
+    --card-foreground: 220 70% 15%;
+    /* Azul escuro para texto em cartões */
+
+    /* Popovers */
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 70% 15%;
+
+    /* Cor primária (dourado) */
+    --primary: 46 65% 52%;
+    /* Dourado (#D4AF37) */
+    --primary-foreground: 220 70% 15%;
+    /* Azul escuro para texto em elementos dourados */
+
+    /* Cor secundária */
+    --secondary: 210 17% 98%;
+    /* Cinza muito claro */
+    --secondary-foreground: 220 70% 15%;
+    /* Azul escuro */
+
+    /* Elementos atenuados */
+    --muted: 210 20% 96%;
+    /* Cinza claro para áreas atenuadas */
+    --muted-foreground: 215 14% 34%;
+    /* Cinza escuro para texto atenuado */
+
+    /* Elementos de destaque */
+    --accent: 210 17% 96%;
+    /* Cinza muito claro para elementos de destaque */
+    --accent-foreground: 220 70% 15%;
+    /* Azul escuro */
+
+    /* Elementos destrutivos */
+    --destructive: 355 78% 56%;
+    /* Vermelho para ações destrutivas */
+    --destructive-foreground: 0 0% 100%;
+    /* Branco */
+
+    /* Bordas e inputs */
+    --border: 214 32% 91%;
+    /* Cinza claro para bordas */
+    --input: 210 17% 96%;
+    /* Cinza muito claro para inputs */
+    --ring: 46 65% 52%;
+    /* Dourado para foco */
+  }
+
+  .dark {
+    /* Cores para o tema escuro */
+    --background: 220 70% 15%;
+    /* Azul escuro como fundo */
+    --foreground: 0 0% 100%;
+    /* Branco para texto */
+
+    /* Cartões no tema escuro */
+    --card: 217 71% 24%;
+    /* Azul um pouco mais claro para cartões */
+    --card-foreground: 0 0% 100%;
+    /* Branco para texto em cartões */
+
+    /* Popovers no tema escuro */
+    --popover: 217 71% 24%;
+    --popover-foreground: 0 0% 100%;
+
+    /* Cor primária no tema escuro (dourado) */
+    --primary: 46 65% 52%;
+    /* Mantém o dourado */
+    --primary-foreground: 220 70% 15%;
+    /* Azul escuro */
+
+    /* Cor secundária no tema escuro */
+    --secondary: 217 56% 33%;
+    /* Azul médio */
+    --secondary-foreground: 0 0% 100%;
+    /* Branco */
+
+    /* Elementos atenuados no tema escuro */
+    --muted: 217 56% 33%;
+    /* Azul médio */
+    --muted-foreground: 215 20% 70%;
+    /* Cinza azulado claro */
+
+    /* Elementos de destaque no tema escuro */
+    --accent: 217 56% 33%;
+    /* Azul médio */
+    --accent-foreground: 0 0% 100%;
+    /* Branco */
+
+    /* Elementos destrutivos no tema escuro */
+    --destructive: 355 78% 56%;
+    /* Vermelho */
+    --destructive-foreground: 0 0% 100%;
+    /* Branco */
+
+    /* Bordas e inputs no tema escuro */
+    --border: 217 56% 33%;
+    /* Azul médio */
+    --input: 217 56% 33%;
+    /* Azul médio */
+    --ring: 46 65% 52%;
+    /* Dourado */
+  }
+
   * {
-    @apply border-border outline-ring/50;
+    border-color: hsl(var(--border));
   }
 
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer components {
+
+  /* Classes personalizadas para o tema imobiliário */
+  .bg-azul-escuro {
+    background-color: #0a2463;
+  }
+
+  .text-azul-escuro {
+    color: #0a2463;
+  }
+
+  .bg-dourado {
+    background-color: #d4af37;
+  }
+
+  .bg-dourado-claro {
+    background-color: #f2d16b;
+  }
+
+  .text-dourado {
+    color: #d4af37;
+  }
+
+  .border-dourado {
+    border-color: #d4af37;
+  }
+
+  .hover\:text-dourado:hover {
+    color: #d4af37;
+  }
+
+  .hover\:bg-dourado-claro:hover {
+    background-color: #f2d16b;
+  }
+
+  /* Estilos para o hero */
+  .bg-hero {
+    background-color: #0a2463;
+    background-image: linear-gradient(rgba(10, 30, 63, 0.85), rgba(10, 30, 63, 0.85)),
+      url("/placeholder.svg?height=800&width=1600");
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* Estilos para elementos de luxo */
+  .shadow-luxury {
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
+  }
+
+  .border-luxury {
+    border: 1px solid rgba(212, 175, 55, 0.3);
+  }
+
+  .gradient-luxury {
+    background: linear-gradient(135deg, #0a2463 0%, #1a365d 100%);
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #d4af37 0%, #f2d16b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
   }
 }

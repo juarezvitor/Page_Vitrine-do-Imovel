@@ -10,11 +10,11 @@ export default function ContatoPage() {
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-1">
-        <div className="bg-azul-escuro text-black py-16">
+        <div className="bg-azul-escuro text-white py-16">
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-3xl mx-auto text-center space-y-4">
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">Entre em Contato</h1>
-              <p className="text-xl text-black/80">
+              <p className="text-xl text-white/80">
                 Estamos prontos para atender você e responder todas as suas dúvidas
               </p>
             </div>

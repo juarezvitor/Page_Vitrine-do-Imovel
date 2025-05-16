@@ -72,7 +72,7 @@ export function Contato() {
 
   return (
     <div className="grid md:grid-cols-2 gap-8">
-      <Card>
+      <Card className="shadow-luxury">
         <CardContent className="p-6 space-y-6">
           <div className="space-y-2">
             <h2 className="text-2xl font-bold">Entre em Contato</h2>
@@ -154,7 +154,7 @@ export function Contato() {
                 />
               </div>
 
-              <Button type="submit" className="w-full" disabled={enviando}>
+              <Button type="submit" className="w-full bg-azul-escuro text-white hover:bg-azul-escuro/90" disabled={enviando}>
                 {enviando ? "Enviando..." : "Enviar Mensagem"}
               </Button>
             </form>

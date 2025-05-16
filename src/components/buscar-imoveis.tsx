@@ -41,16 +41,16 @@ export function BuscarImoveis() {
 
   return (
     <div className="space-y-8">
-      <Card>
+      <Card className="shadow-luxury border-luxury">
         <CardContent className="p-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="space-y-2">
-              <Label htmlFor="cidade">Cidade</Label>
+              <Label htmlFor="cidade" className="text-azul-escuro">Cidade</Label>
               <Select
                 defaultValue={filtros.cidade}
                 onValueChange={(value) => setFiltros({ ...filtros, cidade: value })}
               >
-                <SelectTrigger id="cidade">
+                <SelectTrigger id="cidade" className="border-border focus:ring-primary">
                   <SelectValue placeholder="Selecione a cidade" />
                 </SelectTrigger>
                 <SelectContent>
@@ -63,9 +63,9 @@ export function BuscarImoveis() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="bairro">Bairro</Label>
+              <Label htmlFor="bairro" className="text-azul-escuro">Bairro</Label>
               <Select value={filtros.bairro} onValueChange={(value) => setFiltros({ ...filtros, bairro: value })}>
-                <SelectTrigger id="bairro">
+                <SelectTrigger id="bairro" className="border-border focus:ring-primary">
                   <SelectValue placeholder="Todos os bairros" />
                 </SelectTrigger>
                 <SelectContent>
@@ -81,8 +81,8 @@ export function BuscarImoveis() {
 
             <div className="space-y-2 col-span-1 md:col-span-2">
               <div className="flex justify-between">
-                <Label>Faixa de Valor</Label>
-                <span className="text-sm text-muted-foreground">
+                <Label className="text-azul-escuro">Faixa de Valor</Label>
+                <span className="text-sm text-muted-foreground font-medium">
                   {formatarValor(filtros.valorMin)} - {formatarValor(filtros.valorMax)}
                 </span>
               </div>
@@ -97,7 +97,7 @@ export function BuscarImoveis() {
             </div>
           </div>
 
-          <Button className="w-full mt-6">
+          <Button className="w-full mt-6 bg-azul-escuro text-white hover:bg-azul-escuro/90">
             <Search className="mr-2 h-4 w-4" />
             Buscar Imóveis
           </Button>

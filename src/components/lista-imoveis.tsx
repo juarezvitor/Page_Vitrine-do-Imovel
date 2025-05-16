@@ -77,7 +77,7 @@ export function ListaImoveis({ filtros }: ListaImoveisProps) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {imoveisFiltrados.map((imovel) => (
-          <Card key={imovel.id} className="overflow-hidden group">
+          <Card key={imovel.id} className="overflow-hidden group shadow-luxury">
             <div className="relative">
               <Image
                 src={Array.isArray(imovel.imagem) ? imovel.imagem[0] : imovel.imagem || `/placeholder.svg?height=300&width=500`}
@@ -90,7 +90,7 @@ export function ListaImoveis({ filtros }: ListaImoveisProps) {
                 variant="ghost"
                 size="icon"
                 className={`absolute top-2 right-2 bg-white/80 hover:bg-white ${
-                  favoritos.includes(imovel.id) ? "text-rose-500" : "text-gray-500"
+                  favoritos.includes(imovel.id) ? "text-azul-escuro" : "text-gray-500"
                 }`}
                 onClick={() => toggleFavorito(imovel.id)}
               >
@@ -108,7 +108,7 @@ export function ListaImoveis({ filtros }: ListaImoveisProps) {
                     {imovel.bairro}, {imovel.cidade}
                   </span>
                 </div>
-                <p className="text-2xl font-bold text-primary">{formatarValor(imovel.valor)}</p>
+                <p className="text-2xl font-bold text-azul-escuro">{formatarValor(imovel.valor)}</p>
                 <div className="flex justify-between pt-2">
                   <div className="flex items-center gap-1">
                     <Bed className="h-4 w-4 text-muted-foreground" />
@@ -127,7 +127,7 @@ export function ListaImoveis({ filtros }: ListaImoveisProps) {
             </CardContent>
 
             <CardFooter className="p-4 pt-0">
-              <Button asChild className="w-full">
+              <Button asChild className="w-full bg-azul-escuro text-white hover:bg-azul-escuro/90">
                 <Link href={`/imovel/${imovel.id}`}>Ver Detalhes</Link>
               </Button>
             </CardFooter>
@@ -144,7 +144,7 @@ export function ListaImoveis({ filtros }: ListaImoveisProps) {
 
       {imoveisFiltrados.length > 0 && (
         <div className="flex justify-center pt-6">
-          <Button variant="outline" size="lg">
+          <Button variant="outline" size="lg" className="border-azul-escuro text-azul-escuro hover:bg-azul-escuro/10">
             Carregar Mais Imóveis
           </Button>
         </div>

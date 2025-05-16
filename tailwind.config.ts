@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss"
-import tailwindcssAnimate from "tailwindcss-animate";
+import tailwindcssAnimate from "tailwindcss-animate"
 
 const config = {
   darkMode: "class",
@@ -7,10 +7,9 @@ const config = {
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx,css}",
-    "*.{js,ts,jsx,tsx,mdx,css}",
+    "./src/**/*.{ts,tsx}",
+    "*.{js,ts,jsx,tsx,mdx}",
   ],
-  prefix: "",
   theme: {
     container: {
       center: true,
@@ -60,19 +59,13 @@ const config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
+      boxShadow: {
+        "luxury-sm": "0 2px 8px rgba(10, 36, 99, 0.1)",
+        "luxury-md": "0 4px 12px rgba(10, 36, 99, 0.15)",
+        "luxury-lg": "0 8px 24px rgba(10, 36, 99, 0.2)",
       },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
+      backgroundImage: {
+        "gradient-luxury": "linear-gradient(135deg, #0A2463 0%, #1E3A8A 100%)",
       },
     },
   },
@@ -80,4 +73,3 @@ const config = {
 } satisfies Config
 
 export default config
-
